@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>BlogSphere X - Advanced Blog Platform</title>
+
+<link rel="stylesheet" href="style.css">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+
+<div id="progressBar"></div>
+
+<!-- Toast Notification -->
+
+<div id="toast"></div>
+
+<!-- Header -->
+
+<header class="header">
+
+    <div class="logo">
+        <i class="fas fa-blog"></i>
+        <h2>BlogSphere X</h2>
+    </div>
+
+    <div class="search-box">
+        <input
+        type="text"
+        id="searchInput"
+        placeholder="Search blogs...">
+        <i class="fas fa-search"></i>
+    </div>
+
+    <div class="header-actions">
+
+        <button id="themeToggle">
+            🌙
+        </button>
+
+        <button id="notificationBtn">
+            🔔
+        </button>
+
+    </div>
+
+</header>
+
+<!-- Hero Section -->
+
+<section class="hero">
+
+    <div class="hero-content">
+
+        <h1>
+            Create, Share & Inspire
+        </h1>
+
+        <p>
+            Build your audience and publish
+            amazing stories.
+        </p>
+
+        <button class="hero-btn">
+            Start Blogging
+        </button>
+
+    </div>
+
+</section>
+
+<!-- Dashboard -->
+
+<section class="dashboard">
+
+    <div class="dashboard-card">
+        <i class="fas fa-file-alt"></i>
+        <h2 id="totalBlogs">0</h2>
+        <p>Total Blogs</p>
+    </div>
+
+    <div class="dashboard-card">
+        <i class="fas fa-heart"></i>
+        <h2 id="totalLikes">0</h2>
+        <p>Total Likes</p>
+    </div>
+
+    <div class="dashboard-card">
+        <i class="fas fa-eye"></i>
+        <h2 id="totalViews">0</h2>
+        <p>Total Views</p>
+    </div>
+
+    <div class="dashboard-card">
+        <i class="fas fa-bookmark"></i>
+        <h2 id="totalBookmarks">0</h2>
+        <p>Bookmarks</p>
+    </div>
+
+</section>
+
+<!-- Profile Section -->
+
+<section class="profile-section">
+
+    <div class="profile-card">
+
+        <label for="profileUpload">
+
+            <img
+            id="profilePreview"
+            src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png"
+            alt="Profile">
+
+        </label>
+
+        <input
+        type="file"
+        id="profileUpload"
+        accept="image/*"
+        hidden>
+
+        <h2>
+            Naveen G
+            <span class="verified">
+                ✔
+            </span>
+        </h2>
+
+        <p>
+            Full Stack Developer
+        </p>
+
+        <p class="bio">
+            Passionate about Web Development,
+            AI and Software Engineering.
+        </p>
+
+        <div class="profile-stats">
+
+            <div>
+                <h3 id="blogCount">0</h3>
+                <span>Blogs</span>
+            </div>
+
+            <div>
+                <h3 id="followers">250</h3>
+                <span>Followers</span>
+            </div>
+
+            <div>
+                <h3 id="following">180</h3>
+                <span>Following</span>
+            </div>
+
+        </div>
+
+        <button id="followBtn">
+            Follow
+        </button>
+
+    </div>
+
+</section>
+
+<!-- Create Blog -->
+
+<section class="create-blog">
+
+    <h2>
+        ✍️ Create Blog
+    </h2>
+
+    <div class="blog-form">
+
+        <input
+        type="text"
+        id="title"
+        placeholder="Blog Title">
+
+        <input
+        type="text"
+        id="author"
+        placeholder="Author Name">
+
+        <select id="category">
+
+            <option value="">
+                Select Category
+            </option>
+
+            <option>
+                Technology
+            </option>
+
+            <option>
+                Education
+            </option>
+
+            <option>
+                Business
+            </option>
+
+            <option>
+                Health
+            </option>
+
+            <option>
+                Sports
+            </option>
+
+            <option>
+                Travel
+            </option>
+
+        </select>
+
+        <input
+        type="text"
+        id="tags"
+        placeholder="Tags (HTML, CSS, JS)">
+
+        <input
+        type="file"
+        id="imageInput"
+        accept="image/*">
+
+        <img
+        id="preview"
+        src=""
+        alt="Preview">
+
+        <textarea
+        id="content"
+        rows="8"
+        placeholder="Write your blog here..."></textarea>
+
+        <div class="editor-info">
+
+            <span id="wordCount">
+                Words : 0
+            </span>
+
+            <span id="charCount">
+                Characters : 0
+            </span>
+
+            <span id="readingTime">
+                Reading : 0 min
+            </span>
+
+        </div>
+
+        <button
+        class="publish-btn"
+        onclick="publishBlog()">
+
+            Publish Blog
+
+        </button>
+
+    </div>
+
+</section>
+
+<!-- Activity Feed -->
+
+<section class="activity-section">
+
+    <h2>
+        📢 Recent Activity
+    </h2>
+
+    <div id="activityFeed">
+
+    </div>
+
+</section>
+
+<!-- Featured Blogs -->
+
+<section class="featured-section">
+
+    <h2>
+        ⭐ Featured Blogs
+    </h2>
+
+    <div class="featured-container">
+
+        <div class="featured-card">
+            <h3>Future of AI</h3>
+            <p>Artificial Intelligence Trends 2026</p>
+        </div>
+
+        <div class="featured-card">
+            <h3>Web Development</h3>
+            <p>Modern Full Stack Technologies</p>
+        </div>
+
+        <div class="featured-card">
+            <h3>Cyber Security</h3>
+            <p>Protect Digital Information</p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- Filter -->
+
+<section class="filter-section">
+
+    <h2>
+        📂 Filter Blogs
+    </h2>
+
+    <select id="filterCategory">
+
+        <option value="all">
+            All Categories
+        </option>
+
+        <option value="Technology">
+            Technology
+        </option>
+
+        <option value="Education">
+            Education
+        </option>
+
+        <option value="Business">
+            Business
+        </option>
+
+        <option value="Health">
+            Health
+        </option>
+
+        <option value="Sports">
+            Sports
+        </option>
+
+    </select>
+
+</section>
+
+<!-- Trending Blogs -->
+
+<section class="trending-section">
+
+    <h2>
+        🔥 Trending Blogs
+    </h2>
+
+    <div id="trendingBlogs">
+
+    </div>
+
+</section>
+
+<!-- Recent Blogs -->
+
+<section class="blogs-section">
+
+    <h2>
+        📰 Latest Blogs
+    </h2>
+
+    <div
+    id="blogContainer"
+    class="blog-container">
+
+    </div>
+
+</section>
+
+<!-- Newsletter -->
+
+<section class="newsletter">
+
+    <h2>
+        📧 Newsletter
+    </h2>
+
+    <p>
+        Subscribe for latest blog updates.
+    </p>
+
+    <input
+    type="email"
+    placeholder="Enter Email">
+
+    <button>
+        Subscribe
+    </button>
+
+</section>
+
+<!-- Scroll Top -->
+
+<button id="scrollTop">
+    ↑
+</button>
+
+<!-- Footer -->
+
+<footer>
+
+    <h2>
+        BlogSphere X
+    </h2>
+
+    <p>
+        Create • Share • Inspire
+    </p>
+
+    <div class="social-icons">
+
+        <i class="fab fa-facebook"></i>
+
+        <i class="fab fa-instagram"></i>
+
+        <i class="fab fa-linkedin"></i>
+
+        <i class="fab fa-github"></i>
+
+    </div>
+
+    <p>
+        © 2026 BlogSphere X
+    </p>
+
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
